@@ -1,0 +1,4 @@
+scheduler: StepLR
+scheduler_params:
+  step_size: 100
+  gamma: 0.5

@@ -1,0 +1,1 @@
+docker run --rm -v $(pwd):/workspace -p 8888:8888 -m=8gb --shm-size=8g --name 11_jupyter demospace_mnozawa jupyter notebook --ip 0.0.0.0 --allow-root

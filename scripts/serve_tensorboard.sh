@@ -1,0 +1,1 @@
+docker run --rm -v $(pwd):/workspace -p 6006:6006 --name demo_tensorboard demospace_mnozawa tensorboard --host 0.0.0.0 --logdir $1/src/experiments/exp_$2/log
