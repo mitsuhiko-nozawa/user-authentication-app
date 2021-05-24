@@ -1,0 +1,25 @@
+env: RI-021
+
+# 変えるところ ====================
+batch_size: 512
+image_size: 112
+loss_tr: ClassWeightedCrossEntropyLoss
+loss_fn: CrossEntropyLoss
+model: resnet50d
+epochs: 32
+accum_iter: 1
+
+mixing:
+  mixup: False
+  cutmix: False
+  fmix: False
+
+# augmentation
+# scheduler
+# optimizer
+# ==============================
+
+n_splits: 1
+seeds: [2021]
+run_folds: [0]
+

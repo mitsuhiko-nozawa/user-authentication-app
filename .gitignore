@@ -20,4 +20,9 @@ face_recognition/input
 **/weight
 **/preds
 **/val_preds
-facenet-example
+**/mlflow
+_facenet-example
+
+app/*.jpg
+app/*.csv
+app/images

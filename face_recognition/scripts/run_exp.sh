@@ -12,6 +12,9 @@ if [ $2 = f ]; then
 elif [ $2 = d ]; then
     echo デバッグモード
     sh ${out_dir}/run.sh $2
+    cd ${out_dir}
+    ls | grep -v -E 'run.sh' | xargs rm -rf
+    cd -
 else
     echo そのた
 fi

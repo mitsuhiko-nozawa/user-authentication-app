@@ -23,7 +23,13 @@ def run_training(model, trainloader, validloader, epochs, optimizer, optimizer_p
     scheduler_params, loss_tr, loss_fn, early_stopping_steps, verbose, device, seed, fold, weight_path, mixing, log_path, grad_accum_step):
     Writer = SummaryWriter(log_dir=log_path)
 
-    loss_tr = eval(loss_tr)()
+    if loss_tr == "ClassWeightedCrossEntropyLoss":
+        print("ClassWeighted")
+        _, weights =  np.unique(trainloader.dataset.labels, return_counts=True)
+        weights = torch.Tensor(1/weights).to(device)
+        loss_tr = CrossEntropyLoss(weight=weights)
+    else:
+        loss_tr = eval(loss_tr)()
     loss_fn = eval(loss_fn)()
     optimizer = eval(optimizer)(model.parameters(), **optimizer_params)
     scheduler = eval(scheduler)(optimizer, **scheduler_params)
@@ -71,7 +77,8 @@ def run_training(model, trainloader, validloader, epochs, optimizer, optimizer_p
                 Writer.close()
                 return 0
 
-    t = time.time() - start       
+    t = time.time() - start   
+    torch.save(model.model.state_dict(), osp.join( weight_path,  f"{seed}_{fold}_final.pt") )    
     print(f"training until max epoch {epochs},  : best itaration is {best_epoch} | valid auc {best_auc:.4f}")
     Writer.close()
     return 0

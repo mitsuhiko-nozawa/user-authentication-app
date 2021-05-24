@@ -40,7 +40,7 @@ class Infer(BaseManager):
 
 
             model = FaceRecognitionModel(self.params)            
-            model.read_weight()
+            model.read_weight(f"{seed}_{fold}.pt")
             embs = model.predict(testloader)
             persons = test_df["person_id"].to_list()
             test_auc = calc_auc(embs, persons) 
@@ -48,4 +48,9 @@ class Infer(BaseManager):
                 pickle.dump(test_auc, f)  
 
             print(test_auc) 
+            model.read_weight(f"{seed}_{fold}_final.pt")
+            embs = model.predict(testloader)
+            test_auc_final = calc_auc(embs, persons) 
+            print(test_auc_final)
+
                 

@@ -35,7 +35,7 @@ class FaceRecognitionModel(BaseModel):
         embs = inference_fn(model=self.model, dataloader=testloader, device=self.device)
         return embs
 
-    def read_weight(self):
+    def read_weight(self, fname):
         fname = f"{self.seed}_{self.fold}.pt"
         # networkクラスの名前でコンフリクトする
         #print(torch.load( Path(self.weight_path) / fname , map_location=self.device))

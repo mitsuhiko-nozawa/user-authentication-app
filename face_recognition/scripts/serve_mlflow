@@ -1,0 +1,1 @@
+docker run --rm -v $(pwd):/workspace -p 5000:5000 --name 11_mlflow demospace_mnozawa mlflow ui -h 0.0.0.0 --default-artifact-root face_recognition/src/mlflow --backend-store-uri face_recognition/src/mlflow/mlruns
