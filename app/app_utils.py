@@ -237,8 +237,8 @@ def build_model(ROOT):
     from models import resnet50d
     device = "cpu"
     model = resnet50d(n_classes=10).model
-    model.load_state_dict(torch.load( str(ROOT / "weight" / "2021_0.pt") , map_location=device), device)
-    #model.load_state_dict(torch.load( str(ROOT.parent / "face_recognition" / "src" / "experiments" / "exp_002" / "weight"/"2021_0.pt") , map_location=device), device)
+    #model.load_state_dict(torch.load( str(ROOT / "weight" / "2021_0.pt") , map_location=device), device)
+    model.load_state_dict(torch.load( str(ROOT.parent / "face_recognition" / "src" / "experiments" / "exp_002" / "weight"/"2021_0.pt") , map_location=device), device)
     model.eval()
     return model
 

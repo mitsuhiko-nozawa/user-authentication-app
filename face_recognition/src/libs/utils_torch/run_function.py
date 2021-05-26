@@ -62,7 +62,7 @@ def run_training(model, trainloader, validloader, epochs, optimizer, optimizer_p
             scheduler.step()
                 
         # if valid_loss < best_loss:
-        if best_auc < valid_auc:
+        if best_auc < valid_auc and epoch != 0:
             best_auc = valid_auc
             torch.save(model.model.state_dict(), osp.join( weight_path,  f"{seed}_{fold}.pt") )
             #torch.save(model.model.state_dict(), osp.join( weight_path,  f"{seed}_{fold}.pt") ) # networkを保存

@@ -22,5 +22,5 @@ debug=${debug} \
 train_flag=False \
 +exp=${name} \
 +optimizer=Adam \
-+scheduler=no_schedule \
++scheduler=no_scheduling \
 +augmentation=normal \
