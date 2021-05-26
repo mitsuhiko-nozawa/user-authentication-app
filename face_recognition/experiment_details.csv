@@ -1,0 +1,5 @@
+実験番号,実験グループ,画像サイズ,損失関数,モデル,optimizer,scheduler,epochs,batch size,data,augmentation,hard augmentation,debug,memo,
+exp_000,arcface,112,CrossEntropy,ResNet50D,SGD,MultiStepLR,32,512,casis,normal,-,OK,base line,
+exp_001,arcface,112,CrossEntropy,ResNet50D,Adam,MultiStepLR,32,512,casis,normal,-,OK,base line,
+exp_002,arcface,112,CrossEntropy,ResNet50D,Adam,no_schedule,32,512,casis,normal,-,OK,base line,
+exp_003,arcface,112,ClassWeightedCrossEntropy,ResNet50D,Adam,no_schedule,32,512,casis,normal,-,OK,base line,

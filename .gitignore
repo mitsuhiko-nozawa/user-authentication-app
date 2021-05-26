@@ -1,5 +1,4 @@
-face_recognition/input
-
+face_recognition/input/*
 .vscode
 .python-version
 
@@ -15,15 +14,22 @@ face_recognition/input
 **/*.ipynb
 **/.DS_Store
 
+**/hand_tracking
 **/log
 **/outputs
 **/weight
 **/preds
 **/val_preds
-**/mlflow
+**/mlflow/*
 _facenet-example
 
 app/*.jpg
 app/*.csv
 app/images
 **/test_auc
+
+!**/experiment_details.csv
+!**/app/*.csv
+!**/app/images
+!**/app/weight
+!face_recognition/input/*.py
