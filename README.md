@@ -1,8 +1,11 @@
 # User Authentication App 
+センサーデータを用いない、カメラによる入力画像のみを使った顔認証システムのデモアプリを作りました。
 
+mtcnn
+https://github.com/ipazc/mtcnn
+
+### useful commands
 ```
-# useful commands
-
 # sync remote server
 sh scripts/sync.sh
 
@@ -10,11 +13,12 @@ sh scripts/sync.sh
 sh scripts/docker_build.sh
 
 # serve gui application(jupyter, tensorboard, streamlit-app)
-sh serve_xxx.sh
+sh serve_jupyter.sh
+sh serve_tensorboard face_recognition exp_xxx
+sh serve_app 
 ```
-
+### run experiments
 ```
-# run experiments
 # d means debug, f means full
 
 # cpu

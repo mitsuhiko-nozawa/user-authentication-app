@@ -20,5 +20,5 @@ exp_name=${name} \
 debug=${debug} \
 +exp=${name} \
 +optimizer=Adam \
-+scheduler=no_schedule \
++scheduler=MStepLR \
 +augmentation=normal \

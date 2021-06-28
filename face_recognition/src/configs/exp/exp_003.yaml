@@ -6,7 +6,7 @@ image_size: 112
 loss_tr: ClassWeightedCrossEntropyLoss
 loss_fn: CrossEntropyLoss
 model: resnet50d
-epochs: 32
+epochs: 5
 accum_iter: 1
 
 mixing:

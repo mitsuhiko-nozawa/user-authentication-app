@@ -18,5 +18,5 @@ albumentations
 segmentation-models-pytorch
 tensorboard
 psutil
-facenet-pytorch
+mtcnn
 cupy-cuda101

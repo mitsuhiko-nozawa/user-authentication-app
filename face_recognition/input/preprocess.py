@@ -3,6 +3,8 @@ from mtcnn import MTCNN
 import lycon
 import pandas as pd
 
+
+# dfじゃなくてos.walkを使おう
 detector = MTCNN()
 df = pd.read_csv("/workspace/face_recognition/input/data.csv")
 img_paths = [path + "/" + file for path, file in zip(df["path"].to_list(),df["file_name"].to_list())][:10]
