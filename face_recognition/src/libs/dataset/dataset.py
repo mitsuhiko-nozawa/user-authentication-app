@@ -29,7 +29,7 @@ class FaceRecognitionDataset(Dataset):
         image = read_image(image_path / image_file)
         image = self.transform(image=image)["image"]
         
-        if self.phase != "test":
+        if self.phase == "train":
             return image, label
         else:
             return image, 0 # dummy object

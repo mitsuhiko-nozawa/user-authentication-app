@@ -62,7 +62,7 @@ def run_training(model, trainloader, validloader, epochs, optimizer, optimizer_p
             scheduler.step()
                 
         # if valid_loss < best_loss:
-        if best_auc < valid_auc and epoch != 0:
+        if best_auc < valid_auc:
             best_auc = valid_auc
             torch.save(model.model.state_dict(), osp.join( weight_path,  f"{seed}_{fold}.pt") )
             #torch.save(model.model.state_dict(), osp.join( weight_path,  f"{seed}_{fold}.pt") ) # networkを保存
@@ -138,6 +138,7 @@ def valid_fn(model, loss_fn, dataloader, device, epoch):
     embs = torch.cat(embs)
     embs = F.normalize(embs)
     embs = embs.numpy()
+    print(embs.shape)
     valid_auc = calc_auc(embs, persons)    
     print(f"[valid] epoch {epoch} | mean auc {valid_auc:.4f}")
     return valid_auc

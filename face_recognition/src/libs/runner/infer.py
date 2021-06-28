@@ -18,7 +18,7 @@ class Infer(BaseManager):
             test_df = pd.read_csv(self.data_path / "data.csv")
             test_df = test_df[test_df["data"] == "lfw"]
             if self.debug:
-                test_df = test_df[:self.get("batch_size")+2]
+                test_df = test_df[:500]
               
             test_dataset = FaceRecognitionDataset(
                 "test",
@@ -42,15 +42,13 @@ class Infer(BaseManager):
             model = FaceRecognitionModel(self.params)            
             model.read_weight(f"{seed}_{fold}.pt")
             embs = model.predict(testloader)
-            persons = test_df["person_id"].to_list()
+            #persons = test_df["person_id"].to_list()
+            persons = test_dataset.labels
             test_auc = calc_auc(embs, persons) 
             with open(self.WORK_DIR / "test_auc", 'wb') as f:
                 pickle.dump(test_auc, f)  
 
             print(test_auc) 
-            model.read_weight(f"{seed}_{fold}_final.pt")
-            embs = model.predict(testloader)
-            test_auc_final = calc_auc(embs, persons) 
-            print(test_auc_final)
+
 
                 

@@ -19,7 +19,6 @@ WORK_DIR=$(pwd) \
 ROOT=${root} \
 exp_name=${name} \
 debug=${debug} \
-train_flag=False \
 +exp=${name} \
 +optimizer=Adam \
 +scheduler=no_schedule \

@@ -7,7 +7,7 @@ except:
     pass
 
 
-def calc_auc(embs: np.array, persons: list):
+def calc_auc2(embs: np.array, persons: list):
     N = len(persons)
     N_pairs = int((N*N + N) / 2 - N)
 
@@ -38,5 +38,23 @@ def calc_auc(embs: np.array, persons: list):
 
     return roc_auc_score(matches_arr, sims_arr)
 
-    
+def calc_auc(embs: np.array, persons: list):
+    persons = np.array(persons) + 1
+    sims = np.matmul(embs, embs.T)
+    sim_vec = np.triu(sims, k=1).reshape(-1,)
+    ind = np.where(sim_vec!=0)
+    sim_vec = sim_vec[ind]
+
+    persons_mat = np.matmul(persons.reshape(-1, 1), persons.reshape(1, -1)) / persons**2
+    persons_mat[np.where(persons_mat != 1)] = 0
+    persons_vec = persons_mat.reshape(-1,)[ind]
+    if len(persons_vec) <= 100: # debug
+        persons_vec = np.append(persons_vec, 0)
+        sim_vec = np.append(sim_vec, 0.5)
+
+    return roc_auc_score(persons_vec, sim_vec)
+
+
+
+
     
